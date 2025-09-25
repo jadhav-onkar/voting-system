@@ -7,7 +7,10 @@ import { authMiddleware } from "#middleware/middleware.js";
 const port = process.env.PORT ?? "9001";
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -23,7 +26,7 @@ app.post('/register', async (req,res)=>{
     })
     const token = await jwt.sign({id: user.id}, process.env.JWT_SECRET || "")
     res.cookie("token" ,`Bearer ${token}`)
-    res.status(200).json({msg:"user created"})
+    res.status(200).json({msg:"Registered Succesfully"})
   }
   catch(e){
     res.status(500).json({
