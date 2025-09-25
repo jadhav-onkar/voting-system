@@ -6,7 +6,8 @@ axios.defaults.withCredentials = true;
 
 export const Home = () => {
   const [name, setName] = useState<string>("");
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault(); // stop page reload
@@ -14,26 +15,50 @@ export const Home = () => {
       alert("Please enter a name first");
       return;
     }
-    try{
-        const user = await axios.post("http://localhost:3000/register",
-          { name },
-          { withCredentials: true }
-        );
-        alert(user.data.msg);
-        navigate('/vote')
-    }
-    catch(e){
-        alert("Internal server error")
+    if (loading) return; // block multiple requests
+
+    try {
+      setLoading(true);
+      const user = await axios.post(
+        "http://localhost:3000/register",
+        { name },
+        { withCredentials: true }
+      );
+      alert(user.data.msg);
+      navigate("/vote");
+    } catch (e) {
+      alert("Internal server error");
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <div>
-        <h2>Register</h2>
-        <form onSubmit={onSubmit}>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Write your name"/>
-          <button type="submit">Submit</button>
+    <div className="w-screen h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-96">
+        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
+          Register
+        </h2>
+        <form onSubmit={onSubmit} className="space-y-4">
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            disabled={loading}
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-2 rounded-lg font-semibold transition ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700 text-white"
+            }`}
+          >
+            {loading ? "Submitting..." : "Submit"}
+          </button>
         </form>
       </div>
     </div>
