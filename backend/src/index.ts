@@ -1,9 +1,9 @@
 import express from "express";
 import cors from 'cors'
-import { prisma } from "#db/db.js";
+import { prisma } from "./db/db.js";
 import jwt from 'jsonwebtoken';
 import cookieParser from "cookie-parser";
-import { authMiddleware } from "#middleware/middleware.js";
+import { authMiddleware } from "./middleware/middleware.js";
 const port = process.env.PORT ?? "9001";
 
 const app = express();

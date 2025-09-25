@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx --watch --env-file .env src/index.ts",
     "start": "node ./dist/src/index.js",
-    "build": "tsc",
+    "build": "npm inastall && tsc -b",
     "type-check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -32,8 +32,5 @@
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.44.1"
-  },
-  "imports": {
-    "#*": "./src/*"
   }
 }
