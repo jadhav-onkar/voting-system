@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.get("/",(req,res)=>{
   res.send("hi there from ec2")
 })
+
 app.post('/register', async (req,res)=>{
   const name:string = req.body.name;
   if(!name) {res.status(403).send("enter name first")}
@@ -27,7 +28,14 @@ app.post('/register', async (req,res)=>{
       }
     })
     const token = await jwt.sign({id: user.id}, process.env.JWT_SECRET || "")
-    res.cookie("token" ,`Bearer ${token}`)
+    const isProduction = process.env.NODE_ENV === "production";
+
+      res.cookie("token", `Bearer ${token}`, {
+        httpOnly: true,
+        secure: isProduction,                 
+        sameSite: isProduction ? "none" : "lax", 
+        maxAge: 24 * 60 * 60 * 1000     
+      });
     res.status(200).json({msg:"Registered Succesfully"})
   }
   catch(e){

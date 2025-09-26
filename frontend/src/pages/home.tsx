@@ -10,17 +10,17 @@ export const Home = () => {
   const navigate = useNavigate();
 
   async function onSubmit(e: React.FormEvent) {
-    e.preventDefault(); // stop page reload
+    e.preventDefault();
     if (!name) {
       alert("Please enter a name first");
       return;
     }
-    if (loading) return; // block multiple requests
+    if (loading) return;
 
     try {
       setLoading(true);
       const user = await axios.post(
-        "http://localhost:3000/register",
+        `${import.meta.env.VITE_BASE_URL}/register`,
         { name },
         { withCredentials: true }
       );

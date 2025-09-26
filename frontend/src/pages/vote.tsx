@@ -17,11 +17,13 @@ export const Vote = () => {
 
     try {
       setLoading(true)
-      const vote = await axios.post("http://localhost:3000/vote",{ 
+      console.log(import.meta.env.VITE_BASE_URL)
+      const vote = await axios.post(`${import.meta.env.VITE_BASE_URL}/vote`,{ 
         option 
         },{ 
             withCredentials: true 
         })
+        console.log(vote.data)
       alert(vote.data.msg)
       setVoted(true)
       setTimeout(() => {navigate("/")}, 2000)
