@@ -8,13 +8,15 @@ const port = process.env.PORT ?? "9001";
 
 const app = express();
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "https://votingsystemapp.netlify.app/"],
   credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
 
-
+app.get("/",(req,res)=>{
+  res.send("hi there from ec2")
+})
 app.post('/register', async (req,res)=>{
   const name:string = req.body.name;
   if(!name) {res.status(403).send("enter name first")}
