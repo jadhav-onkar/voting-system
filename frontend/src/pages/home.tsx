@@ -57,7 +57,7 @@ export const Home = () => {
                 : "bg-blue-600 hover:bg-blue-700 text-white"
             }`}
           >
-            {loading ? "Submitting..." : "Submit"}
+            {loading ? "Registering..." : "Register"}
           </button>
         </form>
           <button onClick={()=>{navigate('/voting')}} className="w-full py-2 rounded-lg font-semibold transition my-2 bg-blue-600 hover:bg-blue-700 text-white">
