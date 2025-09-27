@@ -14,7 +14,9 @@ export const VoteMonitor = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get<VoteSchema>(`${import.meta.env.VITE_BASE_URL}/votes`)
+        const res = await axios.get<VoteSchema>(`${import.meta.env.VITE_BASE_URL}/votes`,{
+          withCredentials:true
+        })
         setVotes(res.data)
       } catch (error) {
         console.error("Error fetching votes:", error)

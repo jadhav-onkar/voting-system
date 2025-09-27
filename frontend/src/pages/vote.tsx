@@ -17,7 +17,6 @@ export const Vote = () => {
 
     try {
       setLoading(true)
-      console.log(import.meta.env.VITE_BASE_URL)
       const vote = await axios.post(`${import.meta.env.VITE_BASE_URL}/vote`,{ 
         option 
         },{ 
@@ -28,7 +27,8 @@ export const Vote = () => {
       setVoted(true)
       setTimeout(() => {navigate("/")}, 2000)
     } catch (e) {
-      alert("You cannot vote twice")
+      
+      alert(e)
       navigate("/")
     } finally {
       setLoading(false)
