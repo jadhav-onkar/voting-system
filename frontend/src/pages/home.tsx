@@ -35,7 +35,7 @@ export const Home = () => {
 
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-96">
+      <div className="bg-white mx-5 p-8 rounded-2xl shadow-xl w-96">
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Register
         </h2>
@@ -60,6 +60,9 @@ export const Home = () => {
             {loading ? "Submitting..." : "Submit"}
           </button>
         </form>
+          <button onClick={()=>{navigate('/voting')}} className="w-full py-2 rounded-lg font-semibold transition my-2 bg-blue-600 hover:bg-blue-700 text-white">
+            Voting Chart
+          </button>
       </div>
     </div>
   );
