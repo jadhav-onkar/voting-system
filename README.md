@@ -20,6 +20,7 @@ The frontend is deployed on Netlify for seamless hosting, and the backend runs o
 
 - **Frontend**: React
 - **Backend**: Node.js with Express.js (inferred from cookie-parser usage).
+- **Database and ORM**: PostgresSQL (neon db) and Prisma as ORM
 - **Authentication**: JWT and cookie-parser for secure session management.
 - **Charting**: Bar chart for vote visualization (MaterialUI).
 - **Deployment**:
@@ -60,4 +61,4 @@ The frontend is deployed on Netlify for seamless hosting, and the backend runs o
 You can reach me via email or connect with me on LinkedIn:
 
 - **Email:** [ganeshjadhav7478@gmail.com](mailto:ganeshjadhav7478@gmail.com)  
-- **LinkedIn:** [Onkar Jadhav]([https://www.linkedin.com/in/your-linkedin-profile/](https://www.linkedin.com/in/onkar-jadhav-964745236/))
+- **LinkedIn:** [Onkar Jadhav](https://www.linkedin.com/in/your-linkedin-profile/](https://www.linkedin.com/in/onkar-jadhav-964745236/)
