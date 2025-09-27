@@ -18,24 +18,15 @@ The frontend is deployed on Netlify for seamless hosting, and the backend runs o
 
 ## Technologies Used
 
-- **Frontend**: HTML, CSS, JavaScript (likely React.js for dynamic UI and bar chart rendering).
+- **Frontend**: React
 - **Backend**: Node.js with Express.js (inferred from cookie-parser usage).
 - **Authentication**: JWT and cookie-parser for secure session management.
-- **Charting**: Bar chart for vote visualization (e.g., using Chart.js or similar).
+- **Charting**: Bar chart for vote visualization (MaterialUI).
 - **Deployment**:
   - Frontend: Netlify
-  - Backend: AWS with reverse proxy on `api.mydomain.me`
+- Backend: Hosted on AWS with a reverse proxy configured on my personal domain `api.onkarjadhav.me`
 - **Other**: API communication via the reverse proxy URL.
 
-## Project Structure
-
-- `/frontend`: Client-side code for login, voting, and result visualization.
-- `/backend`: Server-side code with API endpoints for authentication, voting, and results.
-- Key files (assumed):
-  - `frontend/package.json`: Frontend dependencies and scripts.
-  - `backend/package.json`: Backend dependencies (e.g., `jsonwebtoken`, `cookie-parser`).
-  - Main server file (e.g., `server.js` or `app.js`).
-  - Main frontend entry (e.g., `index.html`, `App.js`).
 
 ## Installation and Setup
 
@@ -47,62 +38,16 @@ The frontend is deployed on Netlify for seamless hosting, and the backend runs o
 - Netlify account (for frontend deployment)
 - Custom domain (for reverse proxy setup)
 
-### Local Development
-
-1. **Clone the Repository**:
-   ```
-   git clone https://github.com/jadhav-onkar/voting-system.git
-   cd voting-system
-   ```
-
-2. **Install Dependencies**:
-   - Backend:
-     ```
-     cd backend
-     npm install
-     ```
-   - Frontend:
-     ```
-     cd frontend
-     npm install
-     ```
-
-3. **Configure Environment Variables**:
-   - In `/backend`, create a `.env` file with variables like:
-     ```
-     JWT_SECRET=your_jwt_secret
-     PORT=3000
-     ```
-   - Update frontend API URL to point to the local backend (e.g., `http://localhost:3000`).
-
-4. **Run the Backend**:
-   ```
-   cd backend
-   npm start
-   ```
-   The backend will run on `http://localhost:3000` (or configured port).
-
-5. **Run the Frontend**:
-   ```
-   cd frontend
-   npm start
-   ```
-   The frontend will run on `http://localhost:3000` (or similar).
-
-6. **Access Locally**:
-   Open `http://localhost:3000` in your browser.
-
 ## Deployment
 
 - **Frontend (Netlify)**:
   1. Connect the repository to Netlify.
-  2. Set build command to `npm run build` and publish directory to `frontend/build`.
-  3. Deploy and optionally link to your custom domain.
+  2. Set build command to `npm run build` and publish directory to `frontend/dist`.
 
 - **Backend (AWS)**:
-  1. Deploy to AWS (e.g., EC2 or Lambda with API Gateway).
-  2. Configure a reverse proxy (e.g., NGINX) on `api.mydomain.me` to route to the backend.
-  3. Update frontend code to use the production API URL (`https://api.mydomain.me`).
+  1. Deploy to AWS EC2.
+  2. Configure a reverse proxy with NGINX) on `api.mydomain.me` to route to the backend.
+  3. Update frontend code to use the production API URL (`https://api.onkarjadhav.me`).
 
 ## Usage
 
@@ -110,14 +55,9 @@ The frontend is deployed on Netlify for seamless hosting, and the backend runs o
 2. **Vote**: Navigate to the voting page, select one of three options, and submit. The session token will be cleared, preventing further votes in the same session.
 3. **View Results**: On the home page, click "Vote Chart" to see the bar chart, which updates every 5 seconds with the latest vote counts.
 
-## Contributing
-
-Contributions are welcome! Please fork the repository, make changes, and submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
-For questions or issues, open a GitHub issue or contact the maintainer at [your-email@example.com].
+You can reach me via email or connect with me on LinkedIn:
+
+- **Email:** [ganeshjadhav7478@gmail.com](mailto:ganeshjadhav7478@gmail.com)  
+- **LinkedIn:** [Onkar Jadhav]([https://www.linkedin.com/in/your-linkedin-profile/](https://www.linkedin.com/in/onkar-jadhav-964745236/))
